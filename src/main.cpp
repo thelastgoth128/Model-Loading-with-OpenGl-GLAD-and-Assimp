@@ -165,11 +165,11 @@ int main() {
         unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "model");
         glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(model));
 
-        unsigned int transformLoc1 = glGetUniformLocation(lightShader.ID, "view");
+        unsigned int transformLoc1 = glGetUniformLocation(ourShader.ID, "view");
         glUniformMatrix4fv(transformLoc1, 1, GL_FALSE, glm::value_ptr(view));
 
         glm::mat4 projection = glm::perspective(glm::radians(Zoom), 800.0f / 600.0f, 0.1f, 100.0f);
-        unsigned int projectionLoc = glGetUniformLocation(lightShader.ID, "projection");
+        unsigned int projectionLoc = glGetUniformLocation(ourShader.ID, "projection");
         glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
         glfwSwapBuffers(window);
