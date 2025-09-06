@@ -172,39 +172,6 @@ int main() {
         unsigned int projectionLoc = glGetUniformLocation(lightShader.ID, "projection");
         glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
-        //glBindVertexArray(lightVAO);
-        // for(unsigned int i = 0; i < 10; i++) {
-        //     glm::mat4 model = glm::mat4(1.0f);
-        //     model = glm::translate(model, cubePositions[i]);
-        //     float angle = 20.0f * i;
-        //     model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-        //     lightShader.setMat4("model", model);
-
-        //     glDrawArrays(GL_TRIANGLES, 0, 36);
-        // }
-
-        lightSourceShader.use();
-        unsigned int modelLoc = glGetUniformLocation(lightSourceShader.ID, "model");
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelCube));
-
-        unsigned int viewLoc = glGetUniformLocation(lightSourceShader.ID, "view");
-        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-
-        glm::mat4 projectionCube = glm::perspective(glm::radians(Zoom), 800.0f / 600.0f, 0.1f, 100.0f);
-        unsigned int projLoc = glGetUniformLocation(lightSourceShader.ID, "projection");
-        glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projectionCube));
-        
-       // glBindVertexArray(lightCubeVAO);
-        // for(unsigned int i = 0; i < 4; i++) {
-        //     glm::mat4 model = glm::mat4(1.0f);
-        //     model = glm::translate(model, pointLightPositions[i]);
-        //     float angle = 20.0f * i;
-        //     model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-        //     lightSourceShader.setMat4("model", model);
-
-        //     glDrawArrays(GL_TRIANGLES, 0, 36);
-        // }
-
         glfwSwapBuffers(window);
         glfwPollEvents();
     }   
