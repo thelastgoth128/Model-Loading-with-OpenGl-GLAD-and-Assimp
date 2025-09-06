@@ -162,21 +162,7 @@ int main() {
         ourShader.setInt("material.texture_diffuse1", 0);
          ourModel.Draw(ourShader);
 
-        // for (int i = 0; i < 4; i++) {
-        //     std::string number = std::to_string(i);
-        //     lightShader.setVec3("pointLights[" + number + "].ambient",  glm::vec3(0.05f, 0.05f, 0.05f));
-        //     lightShader.setVec3("pointLights[" + number + "].diffuse",  glm::vec3(0.8f, 0.8f, 0.8f));
-        //     lightShader.setVec3("pointLights[" + number + "].specular", glm::vec3(1.0f, 1.0f, 1.0f));
-
-        //     // Optional: set position and attenuation
-        //     lightShader.setVec3("pointLights[" + number + "].position", pointLightPositions[i]);
-        //     lightShader.setFloat("pointLights[" + number + "].constant", 1.0f);
-        //     lightShader.setFloat("pointLights[" + number + "].linear", 0.09f);
-        //     lightShader.setFloat("pointLights[" + number + "].quadratic", 0.032f);
-        // }
-
-
-        unsigned int transformLoc = glGetUniformLocation(lightShader.ID, "model");
+        unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "model");
         glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(model));
 
         unsigned int transformLoc1 = glGetUniformLocation(lightShader.ID, "view");
