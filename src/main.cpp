@@ -151,62 +151,6 @@ int main() {
     // glEnableVertexAttribArray(0);
     // //normals
     // glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-    // glEnableVertexAttribArray(1);
-    // //texture
-    // glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-    // glEnableVertexAttribArray(2);
-    // //setup lightCubeVAO
-    // glBindVertexArray(lightCubeVAO);
-    // glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    // glBufferData(GL_ARRAY_BUFFER,sizeof(vertices),vertices,GL_STATIC_DRAW);
-    // glVertexAttribPointer(0, 3, GL_FLOAT,GL_FALSE, 8 * sizeof(float), (void*)0);
-    // glEnableVertexAttribArray(0);
-    //     //normals
-    // glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-    // glEnableVertexAttribArray(1);
-    // //texture
-    // glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-    // glEnableVertexAttribArray(2);
-
-    //set the texture wrapping/filtering options
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    // //flip the image
-    // stbi_set_flip_vertically_on_load(true);
-
-    // int width, height, nrChannels, width2, height2, nrChannels2;
-    // unsigned char * data = stbi_load("C:\\Users\\HP\\OneDrive\\Documentos\\Cyrus\\Projects\\OpenGL\\src\\Textures\\container2.png", &width, &height, &nrChannels, 0);
-    // //unsigned char * data2 = stbi_load("C:\\Users\\HP\\OneDrive\\Documentos\\Cyrus\\Projects\\OpenGL\\src\\Textures\\container2_specular.png", &width2, &height2, &nrChannels2, 0);
-    
-    // if (data) {
-    //     //generate the texture1
-    //     glBindTexture(GL_TEXTURE_2D, texture1);
-    //     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-    //     glGenerateMipmap(GL_TEXTURE_2D);
-    // }
-    // else {
-    //     cout << "Failed to load texture1" << endl;
-    // }
-
-    // // if (data2) {
-    // //     //generate texture2
-    // //     glBindTexture(GL_TEXTURE_2D, texture2);
-    // //     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width2, height2, 0, GL_RGB, GL_UNSIGNED_BYTE, data2);
-    // //     glGenerateMipmap(GL_TEXTURE_2D);
-    // // }
-    // // else {
-    // //     cout << "Failed to load texture2" << endl;
-    // // }
-
-    // //free the image memory
-    // stbi_image_free(data);
-    // //stbi_image_free(data2);
-
-    Shader lightShader("C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/OpenGL/src/shaders/vertex.vs","C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/OpenGL/src/shaders/fragment.fss");
-    Shader lightSourceShader("C:\\Users/HP/OneDrive/Documentos/Cyrus/Projects/OpenGL/src/shaders/cubevertex.vs","C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/OpenGL/src/shaders/cubefragment.fss");
 
     Shader ourShader("C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/OpenGL/src/shaders/Avertex.vs","C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/OpenGL/src/shaders/Afragment.fss");
 
