@@ -167,62 +167,6 @@ int main() {
         glClearColor(0.0f, 0.0f, 0.0f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        float time = glfwGetTime();
-        lightPos.x =  2.0f;
-        lightPos.z =  2.0f;
-
-        // lightShader.use();
-        // lightShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-        // lightShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        // lightShader.setVec3("lightPos", lightPos);
-        // lightShader.setVec3("viewPos", cameraPos);
-        // lightShader.setVec3("material.ambient", 0.2125f, 0.1275f, 0.054f);
-        // lightShader.setVec3("material.diffuse", 0.714f, 0.4284f, 0.18144f);
-        // lightShader.setVec3("material.specular", 0.393548f, 0.271906f, 0.166721f);
-        // lightShader.setFloat("material.shininess", 25.6f);
-        // lightShader.setVec3("light.ambient", 0.3f, 0.3f, 0.3f);
-        // lightShader.setVec3("light.diffuse", 0.8f, 0.8f, 0.8f); // darkened
-        // lightShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-        // // lightShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
-        // lightShader.setFloat("light.constant", 1.0f);
-        // lightShader.setFloat("light.linear", 0.05f);
-        // lightShader.setFloat("light.quadratic", 0.012f);
-        // lightShader.setVec3("light.position", cameraPos);
-        // lightShader.setVec3("light.direction", cameraFront);
-        // lightShader.setFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
-        // lightShader.setFloat("light.outerCutOff", glm::cos(glm::radians(17.5)));
-        // // lightShader.setFloat("pointLights[0].constant", 1.0f);
-        // lightShader.setVec3("dirLight.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
-        // lightShader.setVec3("dirLight.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
-        // lightShader.setVec3("dirLight.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
-        // lightShader.setVec3("dirLight.specular", glm::vec3(1.0f, 1.0f, 1.0f));
-
-
-        //light 
-        glm::mat4 modelCube = glm::mat4(1.0f);
-        modelCube = glm::mat4(1.0f);
-        modelCube =glm::translate(modelCube, lightPos);
-        modelCube = glm::scale(modelCube, glm::vec3(0.2f));
-
-        //light properties
-        glm::vec3 lightColor = glm::vec3(1.0f);
-
-        glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
-        glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f);
-
-        lightShader.setVec3("light.ambient", ambientColor);
-        lightShader.setVec3("light.diffuse", diffuseColor);
-
-        lightSourceShader.setVec3("lightColor", lightColor);
-
-        lightShader.setInt("material.diffuse", 0);
-        glActiveTexture(GL_TEXTURE0);
-        // glBindTexture(GL_TEXTURE_2D, texture1);
-
-        // lightShader.setInt("material.specular", 1);
-        // glActiveTexture(GL_TEXTURE1);
-        // glBindTexture(GL_TEXTURE_2D, texture2);
-
         const float radius = 10.0f;
         float camX = sin(glfwGetTime()) * radius;
         float camZ = cos(glfwGetTime()) * radius;
