@@ -1,0 +1,92 @@
+# Blender MTL File: 'None'
+# Material Count: 8
+
+newmtl Material
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Wolf3D_Body
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump C:\\Users\\HP\\OneDrive\\Documentos\\Cyrus\\Projects\\model_loading\\src\\Textures\\textures\\Wolf3D_Male_Athletic_nm_1.jpeg
+map_Kd C:\\Users\\HP\\OneDrive\\Documentos\\Cyrus\\Projects\\model_loading\\src\\Textures\\textures\\body_texture_2.jpeg
+
+newmtl Wolf3D_Eye
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\HP\\OneDrive\\Documentos\\Cyrus\\Projects\\model_loading\\src\\Textures\\textures\\1622793658-eye-01-mask_0.jpeg
+
+newmtl Wolf3D_Glasses
+Ns 272.250012
+Ka 1.000000 1.000000 1.000000
+Kd 0.002264 0.001675 0.001842
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Wolf3D_Hair
+Ns 16.735535
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump C:\\Users\\HP\\OneDrive\\Documentos\\Cyrus\\Projects\\model_loading\\src\\Textures\\textures\\hair-23-N_3.png
+map_Kd C:\\Users\\HP\\OneDrive\\Documentos\\Cyrus\\Projects\\model_loading\\src\\Textures\\textures\\hair_color_4.jpeg
+
+newmtl Wolf3D_Outfit_Top
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump C:\\Users\\HP\\OneDrive\\Documentos\\Cyrus\\Projects\\model_loading\\src\\Textures\\textures\\outfit-classic-04-v2-m-top-N_12.jpeg
+map_Kd C:\\Users\\HP\\OneDrive\\Documentos\\Cyrus\\Projects\\model_loading\\src\\Textures\\textures\\outfit-classic-04-v2-m-top-D_13.jpeg
+
+
+newmtl Wolf3D_Skin
+Ns 81.000006
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\HP\\OneDrive\\Documentos\\Cyrus\\Projects\\model_loading\\src\\Textures\\textures\\face_texture_5.jpeg
+
+newmtl Wolf3D_Teeth
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\HP\\OneDrive\\Documentos\\Cyrus\\Projects\\model_loading\\src\\Textures\\textures\\Wolf3D_Teeth_15.jpeg
