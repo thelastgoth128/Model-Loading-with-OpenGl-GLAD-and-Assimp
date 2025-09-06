@@ -120,7 +120,7 @@ int main() {
     trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
     trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
     vec = trans * vec;
-    cout << vec.x << vec.y <<vec.z << endl;
+
 
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));
