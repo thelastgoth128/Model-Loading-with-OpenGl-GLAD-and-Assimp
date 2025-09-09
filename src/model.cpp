@@ -183,6 +183,7 @@ std::cout << "[TextureLoader] Attempting to load texture: " << str.C_Str() << " 
         texture.path = str.C_Str();
         textures.push_back(texture);
         textures_loaded.push_back(texture);
+        std::cout << "Done loading texture" << endl;
     } catch (...) {
         std::cerr << "[TextureLoader] Failed to load external texture: " << str.C_Str() << std::endl;
     }
