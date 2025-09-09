@@ -1,8 +1,8 @@
-#include "renderer.cpp"
+// #include "renderer.cpp"
 
-using namespace std;
+// using namespace std;
 
-int main() {
-    launch_glfw_renderer();
-    return 0;
-}
+// int main() {
+//     launch_glfw_renderer();
+//     return 0;
+// }
