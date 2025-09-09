@@ -1,7 +1,6 @@
 #include "model_loader.hpp"
 #include "model.h" // Your actual model class
 
-static Model* ourModel = nullptr;
 
 void load_model_from_path(const char* path) {
     std::cout << "[ModelLoader] Loading model from: " << path << std::endl;
