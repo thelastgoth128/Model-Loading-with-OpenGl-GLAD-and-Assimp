@@ -99,7 +99,7 @@ glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
 
 
-void launch_glfw_renderer() {
+void launch_glfw_renderer(const std::string& modelPath) {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -146,7 +146,8 @@ void launch_glfw_renderer() {
 
     Shader ourShader("C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/OpenGL/src/shaders/Avertex.vs","C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/OpenGL/src/shaders/Afragment.fss");
 
-    Model ourModel("C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/model_loading/src/Textures/backpack.obj");
+   ourModel = new Model(modelPath.c_str());
+
 //     if (!ourModel) {
 //     std::cerr << "No model loaded — aborting render.\n";
 //     return;
@@ -173,7 +174,7 @@ std::cout << "[Renderer] Launching GLFW window...\n";
 
         ourShader.use();
         ourShader.setInt("material.texture_diffuse1", 0);
-        ourModel.Draw(ourShader);
+        ourModel->Draw(ourShader);
 
         unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "model");
         glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(model));
