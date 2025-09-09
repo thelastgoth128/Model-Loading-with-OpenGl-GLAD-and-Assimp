@@ -14,3 +14,6 @@ void load_model_from_path(const char* path);
 #ifdef __cplusplus
 Model* get_loaded_model();
 #endif
+
+extern Model* ourModel;
+
