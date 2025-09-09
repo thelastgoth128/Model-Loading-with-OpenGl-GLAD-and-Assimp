@@ -1,9 +1,7 @@
 #include "texture_loader.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
-#include <string>
-#include <glad/glad.h>
-#include <iostream>
+
 
 
 unsigned int TextureLoader::TextureFromFile(const char *path, const std::string &directory)
