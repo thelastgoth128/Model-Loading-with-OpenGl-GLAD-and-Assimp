@@ -15,11 +15,16 @@ unsigned int TextureLoader::TextureFromFile(const char *path, const std::string 
     std::cout<<"filename: "<< filename<<endl;
 
     unsigned int textureID;
+        std::cout<<"loading texture filename"<<endl;
     glGenTextures(1, &textureID);
     
+     std::cout<<"loading gen textures"<<endl;
+
 
     int width, height, nrComponents;
     unsigned char *data = stbi_load(filename.c_str(), &width, &height, &nrComponents, 0);
+    
+            std::cout<<"loading data"<< data <<endl;
     if (data)
     {
         GLenum format = GL_RGB;
@@ -30,9 +35,12 @@ unsigned int TextureLoader::TextureFromFile(const char *path, const std::string 
         else if (nrComponents == 4)
             format = GL_RGBA;
 
+            std::cout<<"loading data"<< data <<endl;
+            
         glBindTexture(GL_TEXTURE_2D, textureID);
         glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
+
 
         GLenum err = glGetError();
 if (err != GL_NO_ERROR) {
