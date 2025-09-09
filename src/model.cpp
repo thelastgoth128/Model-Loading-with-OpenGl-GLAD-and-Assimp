@@ -11,6 +11,7 @@
 
  void Model::loadModel(string path)
  {
+   std::cout << "[Model] Constructor called with path: " << path << std::endl;
  Assimp::Importer import;
  const aiScene *scene = import.ReadFile(path, aiProcess_Triangulate |
  aiProcess_FlipUVs);
@@ -26,6 +27,7 @@ std::cout << "Bones in first mesh: " << scene->mMeshes[0]->mNumBones << std::end
 
  directory = path.substr(0, path.find_last_of('/'));
  processNode(scene->mRootNode, scene);
+  std::cout << "[Model] Constructor finished.\n";
 }
 
  void Model::processNode(aiNode *node, const aiScene *scene)
@@ -41,6 +43,9 @@ std::cout << "Bones in first mesh: " << scene->mMeshes[0]->mNumBones << std::end
  {
  processNode(node->mChildren[i], scene);
  }
+ std::cout << "[Model] Finished processing node: " << node->mName.C_Str() << std::endl;
+
+
 }
 
 Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene)
@@ -86,37 +91,45 @@ Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene)
  indices.push_back(face.mIndices[j]);
  }
 
+ std::cout<< "loading texture" << endl;
  // process material
  if(mesh->mMaterialIndex >= 0)
  {
    if(mesh->mMaterialIndex >= 0) {
       aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
+       std::cout<< "loading texture_diffuse" << endl;
+       std::cout << "[Material] Diffuse count: " << material->GetTextureCount(aiTextureType_DIFFUSE) << std::endl;
+
       vector<Texture> diffuseMaps = loadMaterialTextures(material,
       aiTextureType_DIFFUSE, "texture_diffuse",scene);
       textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+       std::cout<< "loading texture_specular" << endl;
+       std::cout << "[Material] Specular count: " << material->GetTextureCount(aiTextureType_SPECULAR) << std::endl;
       vector<Texture> specularMaps = loadMaterialTextures(material,aiTextureType_SPECULAR, "texture_specular",scene);
       textures.insert(textures.end(), specularMaps.begin(),specularMaps.end());
    
-//       // Force a known texture if none were loaded
-// if (textures.empty()) {
-//     Texture forcedTexture;
-//     forcedTexture.id = TextureLoader::TextureFromFile("C:\\Users\\HP\\OneDrive\\Documentos\\Cyrus\\Projects\\OpenGL\\src\\Textures\\container.jpg", directory); // or full path
-//     forcedTexture.type = "texture_diffuse1";
-//     forcedTexture.path = "C:\\Users\\HP\\OneDrive\\Documentos\\Cyrus\\Projects\\OpenGL\\src\\Textures\\container.jpg";
-//     textures.push_back(forcedTexture);
+      // Force a known texture if none were loaded
+if (textures.empty()) {
+    Texture forcedTexture;
+    forcedTexture.id = TextureLoader::TextureFromFile("C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/model_loading/src/Textures/source/684c0f35-ba0b-48e0-ab19-db572ea748d3.glb", directory); // or full path
+    forcedTexture.type = "texture_diffuse1";
+    forcedTexture.path = "C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/model_loading/src/Textures/source/684c0f35-ba0b-48e0-ab19-db572ea748d3.glb";
+    textures.push_back(forcedTexture);
 
-//     std::cout << "Injected fallback texture: " << forcedTexture.path << std::endl;
-// }
+    std::cout << "Injected fallback texture: " << forcedTexture.path << std::endl;
+}
 
    }
  }
+  std::cout << "[Model] Finished processing mesh with " << vertices.size() << " vertices.\n";
+
  return Mesh(vertices, indices, textures);
 }
 
 
 vector<Texture> Model::loadMaterialTextures(aiMaterial *mat,aiTextureType type,string typeName, const aiScene* scene)
  {
-
+std::cout<<"getting texture diffuse" << endl;
  vector<Texture>textures;
  for(unsigned int i=0; i < mat->GetTextureCount(type);i++)
  {
@@ -135,26 +148,55 @@ vector<Texture> Model::loadMaterialTextures(aiMaterial *mat,aiTextureType type,s
  }
  if(!skip)
  {//iftexturehasn’tbeenloadedalready,loadit
- aiString str;
+std::cout<<"Getting texture from embedded" << endl;
+std::cout << "[TextureLoader] Attempting to load texture: " << str.C_Str() << " of type: " << typeName << std::endl;
+}
+
  if (mat->GetTexture(type, i, &str) == AI_SUCCESS) {
    const aiTexture* embeddedTex = scene->GetEmbeddedTexture(str.C_Str());
+
    if (embeddedTex) {
-      Texture texture;
-      texture.id = TextureLoader::TextureFromEmbedded(embeddedTex);
-      texture.type = typeName;
-      texture.path = str.C_Str();
-      textures.push_back(texture);
-      textures_loaded.push_back(texture);
-      continue;
-   }
-   Texture texture;
-   texture.id = TextureLoader::TextureFromFile(str.C_Str(),directory);
-   texture.type = typeName;
-   texture.path = str.C_Str();
-   textures.push_back(texture);
-   textures_loaded.push_back(texture);//addtoloadedtextures
+    std::cout << "[TextureLoader] Embedded texture found: " << str.C_Str() << std::endl;
+} else {
+    std::cerr << "[TextureLoader] Embedded texture NOT found for: " << str.C_Str() << std::endl;
 }
+
+   if (embeddedTex) {
+      std::cout << "[TextureLoader] Embedded texture found: " << str.C_Str() << std::endl;
+        try {
+            Texture texture;
+            texture.id = TextureLoader::TextureFromEmbedded(embeddedTex);
+            texture.type = typeName;
+            texture.path = str.C_Str();
+            textures.push_back(texture);
+            textures_loaded.push_back(texture);
+            continue; // skip file-based loading
+        } catch (...) {
+            std::cerr << "[TextureLoader] Failed to load embedded texture: " << str.C_Str() << std::endl;
+        }
+   }
+   std::cout << "[TextureLoader] Trying external texture: " << str.C_Str() << std::endl;
+    try {
+        Texture texture;
+        texture.id = TextureLoader::TextureFromFile(str.C_Str(), directory);
+        texture.type = typeName;
+        texture.path = str.C_Str();
+        textures.push_back(texture);
+        textures_loaded.push_back(texture);
+    } catch (...) {
+        std::cerr << "[TextureLoader] Failed to load external texture: " << str.C_Str() << std::endl;
+    }
  }
  }
+ if (textures.empty()) {
+    std::cout << "[TextureLoader] No textures found. Injecting fallback.\n";
+    Texture fallback;
+    fallback.id = TextureLoader::TextureFromFile("C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/model_loading/src/Textures/source/684c0f35-ba0b-48e0-ab19-db572ea748d3.glb", directory);
+    fallback.type = typeName;
+    fallback.path = "C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/model_loading/src/Textures/source/684c0f35-ba0b-48e0-ab19-db572ea748d3.glb";
+    textures.push_back(fallback);
+    textures_loaded.push_back(fallback);
+}
+
  return textures;
  }
