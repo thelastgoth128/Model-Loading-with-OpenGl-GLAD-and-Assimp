@@ -14,6 +14,7 @@ unsigned int TextureLoader::TextureFromFile(const char *path, const std::string 
     }else {
         filename = directory + '/' + std::string(path);
     }
+    std::cout<<"filename: "<< filename<<endl;
 
     unsigned int textureID;
     glGenTextures(1, &textureID);
@@ -35,11 +36,18 @@ unsigned int TextureLoader::TextureFromFile(const char *path, const std::string 
         glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
 
+        GLenum err = glGetError();
+if (err != GL_NO_ERROR) {
+    std::cerr << "[OpenGL] Texture upload error: " << err << std::endl;
+}
+
+
         // Texture parameters
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);   
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        
 
         stbi_image_free(data);
     }
