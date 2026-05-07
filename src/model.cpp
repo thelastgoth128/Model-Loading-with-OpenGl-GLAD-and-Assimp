@@ -111,9 +111,9 @@ Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene)
       // Force a known texture if none were loaded
 if (textures.empty()) {
     Texture forcedTexture;
-    forcedTexture.id = TextureLoader::TextureFromFile("C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/model_loading/src/Textures/source/684c0f35-ba0b-48e0-ab19-db572ea748d3.glb", directory); // or full path
+    forcedTexture.id = TextureLoader::TextureFromFile("src/Textures/container2.png", directory); 
     forcedTexture.type = "texture_diffuse1";
-    forcedTexture.path = "C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/model_loading/src/Textures/source/684c0f35-ba0b-48e0-ab19-db572ea748d3.glb";
+    forcedTexture.path = "src/Textures/container2.png";
     textures.push_back(forcedTexture);
 
     std::cout << "Injected fallback texture: " << forcedTexture.path << std::endl;
@@ -192,9 +192,9 @@ std::cout << "[TextureLoader] Attempting to load texture: " << str.C_Str() << " 
  if (textures.empty()) {
     std::cout << "[TextureLoader] No textures found. Injecting fallback.\n";
     Texture fallback;
-    fallback.id = TextureLoader::TextureFromFile("C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/model_loading/src/Textures/source/684c0f35-ba0b-48e0-ab19-db572ea748d3.glb", directory);
+    fallback.id = TextureLoader::TextureFromFile("src/Textures/container2.png", directory);
     fallback.type = typeName;
-    fallback.path = "C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/model_loading/src/Textures/source/684c0f35-ba0b-48e0-ab19-db572ea748d3.glb";
+    fallback.path = "src/Textures/container2.png";
     textures.push_back(fallback);
     textures_loaded.push_back(fallback);
 }
