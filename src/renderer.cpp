@@ -117,7 +117,7 @@ void launch_glfw_renderer(const std::string& modelPath) {
         cout << "Failed to initialize GLAD" << endl;
     }
 
-    glViewport(0,0,1920,1080);
+    glViewport(0,0,800,600);
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
@@ -141,10 +141,11 @@ void launch_glfw_renderer(const std::string& modelPath) {
                         glm::vec3(0.0f, 0.0f, 0.0f),
                         glm::vec3(0.0f, 1.0f, 0.0f));
 
-    Shader lightShader("C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/OpenGL/src/shaders/vertex.vs","C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/OpenGL/src/shaders/fragment.fss");
-    Shader lightSourceShader("C:\\Users/HP/OneDrive/Documentos/Cyrus/Projects/OpenGL/src/shaders/cubevertex.vs","C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/OpenGL/src/shaders/cubefragment.fss");
+    // Using relative paths to shaders
+    Shader lightShader("src/shaders/vertex.vs", "src/shaders/fragment.fss");
+    Shader lightSourceShader("src/shaders/cubevertex.vs", "src/shaders/cubefragment.fss");
 
-    Shader ourShader("C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/OpenGL/src/shaders/Avertex.vs","C:/Users/HP/OneDrive/Documentos/Cyrus/Projects/OpenGL/src/shaders/Afragment.fss");
+    Shader ourShader("src/shaders/Avertex.vs", "src/shaders/Afragment.fss");
 
    ourModel = new Model(modelPath.c_str());
 
@@ -153,15 +154,15 @@ void launch_glfw_renderer(const std::string& modelPath) {
 //     return;
 // }
 
-std::cout << "[Renderer] Launching GLFW window...\n";
+    std::cout << "[Renderer] Launching GLFW window...\n";
+
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetCursorPosCallback(window, mouse_callback);
+    glfwSetScrollCallback(window, scrool_callback);
+    glEnable(GL_DEPTH_TEST);
 
     while (!glfwWindowShouldClose(window)) {
         processInput(window);
-        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-        glfwSetCursorPosCallback(window, mouse_callback);
-        glfwSetScrollCallback(window, scrool_callback);
-
-        glEnable(GL_DEPTH_TEST);
 
         glClearColor(0.0f, 0.0f, 0.0f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
