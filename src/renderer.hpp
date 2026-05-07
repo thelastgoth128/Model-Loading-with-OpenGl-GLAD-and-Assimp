@@ -1,4 +1,7 @@
 #pragma once
 
+#include <string>
+using namespace std;
 
-void launch_glfw_renderer(const std::string& modelPath);
+
+void launch_glfw_renderer(const string& modelPath);
